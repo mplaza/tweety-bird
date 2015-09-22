@@ -1,0 +1,96 @@
+<div class='sun-background'>
+	<div class='container-fluid'>
+		<div class="row">
+			<div class='col-xs-4'>
+				<div class='fuss-check'>Fuss Check</div>
+			</div>
+			<div class="col-xs-3 col-xs-offset-5">
+				<div class='login pointer' data-toggle="modal" data-target="#loginModal">Login</div>
+				<div class="login pointer" data-toggle="modal" data-target="#signupModal">Sign Up</div>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-xs-4'>
+				<div class='top-margin description'>At Fuss Check, we're revolutionizing your daily interactions by making it easy to check which of your friends are fussy in one easy step. Sign up to enter their twitter handle and see their tweets sentiments and overall fussiness score. All searches remain anonymous.</div>
+				<div class='lg-top-margin caption'>brought to you by MerlinLabs</div>
+				<div class='lg-top-margin headline text-center'>Meet the Team</div>
+				<div><img src='/assets/merlincomputer.jpg' class='img-responsive'/></div>
+			</div>
+			<div class='top-margin col-xs-4'>
+				<img src='/assets/fussy_bull.png' />
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="loginModal" tabindex="-1">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+  <div class="modal-body text-center">
+  		<br /><br />
+		  <%- resource_class.omniauth_providers.each do |provider| %>
+	    	<%= link_to omniauth_authorize_path(resource_name, provider) do%>
+	    		<button class='zocial twitter'>Login with Twitter</button>
+	    	<% end %>
+	  	<% end -%>
+      <br></br>
+      <button class='zocial email' data-toggle="collapse" data-target="#emailsignin">Or Login with Email</button>
+    <br></br>
+    <div class="panel panel-success collapse" id = "emailsignin">
+      <div class = "panel-body">
+          <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div>
+			  <%= f.email_field :email, autofocus: true %></div>
+
+			    <%= f.password_field :password, autocomplete: "off" %></div>
+
+			  <% if devise_mapping.rememberable? -%>
+			    <div><%= f.check_box :remember_me %></div>
+			  <% end -%>
+
+			  <div><%= f.submit "Log in" %></div>
+			<% end %>        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="signupModal" tabindex="-1">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+  <div class="modal-body text-center">
+  	<br /><br />
+   	<%- resource_class.omniauth_providers.each do |provider| %>
+	    	<%= link_to omniauth_authorize_path(resource_name, provider) do%>
+	    		<button class='zocial twitter'>Sign Up with Twitter</button>
+	    	<% end %>
+	  	<% end -%>
+      <br></br>
+    <button class='zocial email' data-toggle="collapse" data-target="#emailsignup">Or Sign Up with Email</button>
+    <br></br>
+    <div class="panel panel-success collapse" id = "emailsignup">
+      <div class = "panel-body">
+          <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+					  <%= devise_error_messages! %>
+
+					  <div><br />
+					  <%= f.email_field :email, autofocus: true %></div>
+
+					  <div> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
+					    <%= f.password_field :password, autocomplete: "off" %></div>
+
+					  <div><br />
+					    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+					  <div><%= f.submit "Sign up" %></div>
+					<% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

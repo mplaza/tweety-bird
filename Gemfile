@@ -5,10 +5,13 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
+
+gem 'rails_12factor'
 # Use SCSS for stylesheets
 gem 'sass-rails', :git => 'https://github.com/zakelfassi/sass-rails'
 # use bootstrap for basic styling
 gem 'bootflat-rails'
+gem 'bootstrap_form'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -20,6 +23,12 @@ gem 'sentimental'
 gem 'figaro'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+
+# authentication gems
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'devise'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

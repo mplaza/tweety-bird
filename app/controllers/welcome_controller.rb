@@ -4,8 +4,11 @@ require 'sentiment_module'
 class WelcomeController < ApplicationController
 	include TwitterModule
 	include SentimentModule
+
+  before_action :auth_user, except: [:landing]
   def index
   	@tweets = []
+    @user = current_user
   end
 
   def gettweets
@@ -15,6 +18,13 @@ class WelcomeController < ApplicationController
   	respond_to do |format|
     	format.json { render :json => @info }
   	end
+  end
+
+  def landing
+  end
+
+  def auth_user
+    redirect_to landing_path unless user_signed_in?
   end
 
 end
