@@ -1,17 +1,19 @@
 require 'twitter_module'
+require 'sentiment_module'
 
 class WelcomeController < ApplicationController
 	include TwitterModule
+	include SentimentModule
   def index
   	@tweets = []
   end
 
   def gettweets
-  	# @tweets = [{text: 'hello'}, {text: '!!'}, {text: 'poopie'}]
   	@handle = params[:handle]
   	@tweets = user_tweets(@handle)
+  	@info = analyze_tweets(@tweets)
   	respond_to do |format|
-    	format.json { render :json => @tweets }
+    	format.json { render :json => @info }
   	end
   end
 

@@ -9,6 +9,7 @@ module TwitterModule
   	config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
 	end
 
+	# return last 25 tweets for given handle
 	def user_tweets(handle)
 		@@client.user_timeline(handle, {count: 25})
 	end

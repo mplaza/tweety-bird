@@ -11,16 +11,25 @@ var Search = React.createClass({
 
 	},
   render: function() {
-    return <form ref='form' onSubmit={this.handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Search Handle"
-                    ref="handle"
-                    name="handle"
-                ></input>
-                <p>
-                	<button type="submit">Search</button>
-                </p>
-            </form>;
+    return (
+    <div className="row top-margin">
+        <div className="col-xs-6 col-xs-offset-3">
+            <form ref='form' onSubmit={this.handleSubmit}>
+                <div className='input-group form-search'>
+                    <input
+                        type="text"
+                        className="form-control search-query"
+                        placeholder="Search Handle"
+                        ref="handle"
+                        name="handle"
+                    ></input>
+                    <span className='input-group-btn'>                	
+                        <button className="btn btn-primary" type="submit">Search</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    );
   }
 });

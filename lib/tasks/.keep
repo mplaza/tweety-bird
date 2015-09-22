@@ -1,0 +1,13 @@
+require 'sentimental'
+
+module SentimentModule
+	Sentimental.load_defaults
+	Sentimental.threshold = 0.25
+	analyzer = Sentimental.new
+
+
+	def get_sentiment(text)
+		analyzer.get_sentiment text
+	end
+
+end

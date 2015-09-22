@@ -11,20 +11,22 @@ var Tweets = React.createClass({
       type: "GET",
       dataType: "json",
       success: function ( data ) {
-        this.setState({ tweets: data });
+        this.setState({ tweets: data.tweets });
       }.bind(this)
     });
   },
 
   render: function () {
-    var tweetNodes = this.state.tweets.map(function ( tweet ) {
-      return <div>{tweet.created_at} : { tweet.text }</div>
-    });
+
     return (
-      <div className="comment-box">
-        <Search onSearchSubmit={ this.handleSearchSubmit } />
-        <div>Tweets: </div>
-        {tweetNodes}
+      <div>
+        <Search onSearchSubmit={this.handleSearchSubmit} />
+        <div className="row">
+          <div className="col-xs-8 col-xs-offset-2">
+            <div>Tweets: </div>
+            <Tweet tweets={this.state.tweets} />
+          </div>
+        </div>
       </div>
     );
   }

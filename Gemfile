@@ -6,7 +6,9 @@ gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', :git => 'https://github.com/zakelfassi/sass-rails'
+# use bootstrap for basic styling
+gem 'bootflat-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -14,6 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'react-rails', '~> 1.3.0'
 
 gem 'twitter'
+gem 'sentimental'
 gem 'figaro'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

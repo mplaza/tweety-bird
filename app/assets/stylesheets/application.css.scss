@@ -11,5 +11,11 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootflat
  *= require_self
  */
+
+.input-group{
+	max-height: 100%
+}
+
