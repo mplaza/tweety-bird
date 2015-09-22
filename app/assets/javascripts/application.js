@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require react
 //= require react_ujs
+//= require justgage-1.1.0.min.js
+//= require raphael-2.1.4.min.js
 //= require components
 //= require_tree .

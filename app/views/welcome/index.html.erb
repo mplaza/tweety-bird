@@ -1,14 +1,19 @@
 <div class="container-fluid">
 <div class="row">
-	<div class="col-xs-2 col-xs-offset-5">
-		<img class='img-responsive center-block' src='assets/happy_whale.png'/>
+	<div class="col-xs-4 col-xs-offset-4">
+	<div id="gauge-title" class="no-show text-center h3">Fuss-o-meter</div>
+	<div id="gauge" class="300x200px"></div>
+		<div id='happy-whale'>
+			<img class='img-responsive center-block' src='assets/happy_whale.png'/>
+		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-xs-8 col-xs-offset-2">
-		<div class="text-center title-text h2">HappyMeter</div>
+		<div id='fuss-msg' class="text-center title-text h2">Fuss Checker</div>
 	</div>
 </div>
+
 
 <%= react_component 'Tweets', { tweets: @tweets} %>
 </div>

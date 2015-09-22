@@ -5,6 +5,34 @@ var Tweets = React.createClass({
         };
     },
   handleSearchSubmit: function ( formData, action ) {
+    function generateMessage(totalsentiment){
+      var msg = ""
+      if(totalsentiment > 30){
+        msg = "Ug oh! Fuss at dangerous levels. Use Extreme Caution."
+      }
+      else if(totalsentiment > 10){
+        msg = "Fuss levels elevated, use care."
+      }
+      else if (totalsentiment > -10){
+        msg = "Fuss within normal ranges. Proceed as usual."
+      }
+      else{
+        msg = "Fuss levels low. Smooth sailing ahead."
+      }
+      return msg;
+    }
+    function showGauge(totalsentiment){
+      $('#happy-whale').slideUp();
+      $('#gauge').empty();
+      $('#fuss-msg').removeClass('h2').text(generateMessage(totalsentiment));
+      $('#gauge-title').removeClass('no-show');
+      var g = new JustGage({
+            id: "gauge",
+            value: totalsentiment,
+            min: -50,
+            max: 50,
+          });
+    }
     $.ajax({
       data: formData,
       url: action,
@@ -12,6 +40,7 @@ var Tweets = React.createClass({
       dataType: "json",
       success: function ( data ) {
         this.setState({ tweets: data.tweets });
+        showGauge(data.totalsentiment);
       }.bind(this)
     });
   },
@@ -23,7 +52,6 @@ var Tweets = React.createClass({
         <Search onSearchSubmit={this.handleSearchSubmit} />
         <div className="row">
           <div className="col-xs-8 col-xs-offset-2">
-            <div>Tweets: </div>
             <Tweet tweets={this.state.tweets} />
           </div>
         </div>
