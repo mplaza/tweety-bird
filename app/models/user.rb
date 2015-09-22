@@ -10,16 +10,14 @@ class User < ActiveRecord::Base
     # Get the identity and user if they exist
     identity = Identity.find_for_oauth(auth)
 
-    # If a signed_in_resource is provided it always overrides the existing user
-    # to prevent the identity being locked with accidentally created accounts.
-    # Note that this may leave zombie accounts (with no associated identity) which
-    # can be cleaned up at a later date.
+  # get signed in user to prevent accidental account creation
     user = signed_in_resource ? signed_in_resource : identity.user
 
     # Create the user if needed
     if user.nil?
       email = auth.info.email
       if !email then email = "#{auth.info.nickname}@twitteremail.com" end
+      # associate email addresses (useful to unite accounts if email provided)
       user = User.where(:email => email).first if email
 
       # Create the user if it's a new registration

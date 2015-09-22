@@ -1,28 +1,31 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Returns first 25 tweets for given handle as well as their sentiment and the overall 'fuss score' (a normalized aggregration of the individual scores).
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Made with Ruby(2.1) and Rails(4.1) with React for front-end views and postgreSQL database.
+Uses twitter and sentimental gems.
+
+To run locally*: 
+bundle install
+rake db:create
+rake db:migrate
+rails s
+
+*twitter application keys are currently in application.yml file. Run bundle exec figaro install for quick setup and add: 
+TWITTER_CONSUMER_KEY: 
+TWITTER_CONSUMER_SECRET: 
+TWITTER_ACCESS_TOKEN: 
+TWITTER_ACCESS_SECRET:
+
+Heroku deploy:
+rake assets:precompile
+
+after add to github/heroku create/git push heroku masteradd postgres and migrate:
+
+heroku addons:add heroku-postgresql
+heroku run rake db:migrate
+
+add keys to heroku with figaro:
+
+figaro heroku:set -e production

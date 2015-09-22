@@ -6,11 +6,12 @@ module SentimentModule
 	Sentimental.threshold = 0.25
 	@@analyzer = Sentimental.new
 
-
+# return sentiment of text
 	def get_sentiment(text)
 		@@analyzer.get_sentiment text
 	end
 
+# return object including indiv tweet sentiments and overall sentiment score
 	def analyze_tweets(tweets)
 		@tweets = tweets
 		@totalsentiment = 0

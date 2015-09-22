@@ -24,6 +24,7 @@
 	</div>
 </div>
 
+<!-- loging/signup modals -->
 
 <div class="modal fade" id="loginModal" tabindex="-1">
 <div class="modal-dialog modal-sm">
@@ -43,13 +44,10 @@
           <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div>
 			  <%= f.email_field :email, autofocus: true %></div>
-
 			    <%= f.password_field :password, autocomplete: "off" %></div>
-
 			  <% if devise_mapping.rememberable? -%>
 			    <div><%= f.check_box :remember_me %></div>
 			  <% end -%>
-
 			  <div><%= f.submit "Log in" %></div>
 			<% end %>        
       </div>
@@ -76,16 +74,12 @@
       <div class = "panel-body">
           <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 					  <%= devise_error_messages! %>
-
 					  <div><br />
 					  <%= f.email_field :email, autofocus: true %></div>
-
 					  <div> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
 					    <%= f.password_field :password, autocomplete: "off" %></div>
-
 					  <div><br />
 					    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
 					  <div><%= f.submit "Sign up" %></div>
 					<% end %>
       </div>

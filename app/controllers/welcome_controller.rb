@@ -6,9 +6,9 @@ class WelcomeController < ApplicationController
 	include SentimentModule
 
   before_action :auth_user, except: [:landing]
+  
   def index
   	@tweets = []
-    @user = current_user
   end
 
   def gettweets
