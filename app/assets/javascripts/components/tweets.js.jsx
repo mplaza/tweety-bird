@@ -54,7 +54,7 @@ var Tweets = React.createClass({
         <WhaleGauge />
         <FussMsg msg={this.state.msg} />
         <Search onSearchSubmit={this.handleSearchSubmit} />
-        <div className="row">
+        <div className="row top-margin">
           <div className="col-xs-8 col-xs-offset-2">
             <Tweet tweets={this.state.tweets} />
           </div>
